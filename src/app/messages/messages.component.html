@@ -1,7 +1,8 @@
-<div *ngIf="messageService.messages.length">
-  <h2>Messages</h2>
+<h2>Messages</h2>
+<div *ngIf="messageService.messages.length;else no_messages">
   <button class="clear" (click)="messageService.clear()">clear</button>
   <ul>
     <li *ngFor='let message of messageService.messages'>{{message}}</li>
   </ul>
 </div>
+<ng-template #no_messages>No messages.</ng-template>
