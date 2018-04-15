@@ -1,6 +1,7 @@
 <h2>My Heroes</h2>
+<input [(ngModel)]="searchText" placeholder="search text goes here">
 <ul class="heroes">
-  <li *ngFor="let hero of heroes" (click)="onSelect(hero)">
+  <li *ngFor="let hero of heroes | filter : searchText" (click)="onSelect(hero)">
     <span class="badge">{{hero.id}}</span> {{hero.name}}
   </li>
 </ul>

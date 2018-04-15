@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { FilterPipe } from './filter.pipe';
 import { HeroesComponent } from './heroes/heroes.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 
@@ -10,6 +11,7 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
+    FilterPipe,
     HeroesComponent,
     HeroDetailComponent,
   ],
