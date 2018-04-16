@@ -11,7 +11,7 @@ import { MessageService } from '../message.service';
 })
 export class HeroesComponent implements OnInit {
   searchText: string;
-  heroes: hero[];
+  heroes: Hero[];
   selectedHero: Hero;
 
   constructor(private heroService: HeroService,
