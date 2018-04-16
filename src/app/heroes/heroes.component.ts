@@ -27,7 +27,7 @@ export class HeroesComponent implements OnInit {
   }
 
   subscribeHeroes(): void {
-    var observable = this.heroes = this.heroService.getHeroesObservable()
+    var observable = this.heroService.getHeroesObservable()
     observable.subscribe(heroes => this.heroes = heroes);
   }
 }
