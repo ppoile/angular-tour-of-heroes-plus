@@ -22,7 +22,6 @@ export class HeroesComponent implements OnInit {
   slaveFilterText: string = "Slaves: Show All";
   searchText: string;
   heroes: Hero[];
-  selectedHero: Hero;
 
   constructor(
     private loginService: LoginService,
@@ -35,11 +34,6 @@ export class HeroesComponent implements OnInit {
     this.subscribeLogins()
     this.subscribeSlaves()
     this.subscribeHeroes()
-  }
-
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-    this.messageService.add('Heroes: hero \'' + hero.name + '\'selected');
   }
 
   subscribeHeroes(): void {
