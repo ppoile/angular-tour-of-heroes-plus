@@ -23,7 +23,7 @@ export class HeroService {
   getObservable(): Observable<Hero[]> {
     this.log('fetching heroes...');
     return this.http.get<Hero[]>(this.heroesUrl).pipe(
-      tap(_ => this.log('fetched heroes')),
+      tap(heroes => this.log(`fetched ${heroes.length} heroes`)),
       catchError(this.handleError('getHeroes', [])));
   }
 
@@ -31,7 +31,7 @@ export class HeroService {
     this.log(`fetching hero id=${id}...`);
     const url = `${this.heroesUrl}/${id}`;
     return this.http.get<Hero>(url).pipe(
-      tap(_ => this.log(`fetched hero id=${id}`)),
+      tap(hero => this.log(`fetched hero ${hero.name}(id=${id})`)),
       catchError(this.handleError<Hero>(`getHero id=${id}`)));
   }
 
@@ -39,7 +39,7 @@ export class HeroService {
     this.log(`searching heroes matching "${term}"...`);
     const url = `${this.heroesUrl}?name=${term}`;
     return this.http.get<Hero[]>(url).pipe(
-      tap(_ => this.log(`found heroes matching "${term}"`)),
+      tap(heroes => this.log(`found ${heroes.length} heroes matching "${term}"`)),
       catchError(this.handleError<Hero[]>('searchHeroes', [])));
   }
 

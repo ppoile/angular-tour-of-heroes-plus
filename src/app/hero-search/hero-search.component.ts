@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
@@ -7,17 +7,19 @@ import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-hero-search',
   templateUrl: './hero-search.component.html',
   styleUrls: ['./hero-search.component.css']
 })
-export class HeroSearchComponent implements OnInit {
+export class HeroSearchComponent implements OnInit, OnDestroy {
   heroes$: Observable<Hero[]>;
   private searchTerms = new Subject<string>();
 
-  constructor(private heroService: HeroService) { }
+  constructor(private heroService: HeroService,
+              private messageService: MessageService) { }
 
   // Push a search term into the observable stream.
   search(term: string): void {
@@ -25,6 +27,7 @@ export class HeroSearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.log('ngOnInit()...');
     this.heroes$ = this.searchTerms.pipe(
       // wait 300ms after each keystroke before considering the term
       debounceTime(300),
@@ -36,5 +39,13 @@ export class HeroSearchComponent implements OnInit {
     setTimeout(() => {
       this.search('');
     }, 0);
+  }
+
+  ngOnDestroy(): void {
+    this.log('ngOnDestroy()...');
+  }
+
+  private log(message: string) {
+    this.messageService.add('HeroSearchComponent: ' + message);
   }
 }
