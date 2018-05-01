@@ -16,10 +16,10 @@ import { MessageService } from '../message.service';
 export class HeroesComponent implements OnInit {
   logins: Login[];
   selectedLogins: Login[];
-  loginFilterText: string = "Logins: Show All";
+  loginFilterText = 'Logins: Show All';
   slaves: Slave[];
   selectedSlaves: Slave[];
-  slaveFilterText: string = "Slaves: Show All";
+  slaveFilterText = 'Slaves: Show All';
   searchText: string;
   heroes: Hero[];
 
@@ -27,27 +27,26 @@ export class HeroesComponent implements OnInit {
     private loginService: LoginService,
     private slaveService: SlaveService,
     private heroService: HeroService,
-    private messageService: MessageService)
-  { }
+    private messageService: MessageService) { }
 
   ngOnInit() {
-    this.subscribeLogins()
-    this.subscribeSlaves()
-    this.subscribeHeroes()
+    this.subscribeLogins();
+    this.subscribeSlaves();
+    this.subscribeHeroes();
   }
 
   subscribeHeroes(): void {
-    var observable = this.heroService.getObservable()
+    const observable = this.heroService.getObservable();
     observable.subscribe(heroes => this.heroes = heroes);
   }
 
   subscribeSlaves(): void {
-    var observable = this.slaveService.getObservable()
+    const observable = this.slaveService.getObservable();
     observable.subscribe(slaves => this.slaves = slaves);
   }
 
   subscribeLogins(): void {
-    var observable = this.loginService.getObservable()
+    const observable = this.loginService.getObservable();
     observable.subscribe(logins => this.logins = logins);
   }
 
@@ -61,7 +60,7 @@ export class HeroesComponent implements OnInit {
   }
 
   delete(hero: Hero): void {
-    this.heroes = this.heroes.filter(h => h != hero);
+    this.heroes = this.heroes.filter(h => h !== hero);
     this.heroService.deleteHero(hero).subscribe();
   }
 }
