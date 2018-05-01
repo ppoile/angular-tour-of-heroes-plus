@@ -21,12 +21,14 @@ export class HeroService {
     private messageService: MessageService) { }
 
   getObservable(): Observable<Hero[]> {
+    this.log('fetching heroes...');
     return this.http.get<Hero[]>(this.heroesUrl).pipe(
       tap(_ => this.log('fetched heroes')),
       catchError(this.handleError('getHeroes', [])));
   }
 
   getHero(id: number): Observable<Hero> {
+    this.log(`fetching hero id=${id}...`);
     const url = `${this.heroesUrl}/${id}`;
     return this.http.get<Hero>(url).pipe(
       tap(_ => this.log(`fetched hero id=${id}`)),
@@ -34,30 +36,31 @@ export class HeroService {
   }
 
   searchHeroes(term: string): Observable<Hero[]> {
-    var url = 'api/heroes';
-    if (term.trim()) {
-      url += `?name=${term}`;
-    }
+    this.log(`searching heroes matching "${term}"...`);
+    var url = `${this.heroesUrl}?name=${term}`;
     return this.http.get<Hero[]>(url).pipe(
       tap(_ => this.log(`found heroes matching "${term}"`)),
       catchError(this.handleError<Hero[]>('searchHeroes', [])));
   }
 
   updateHero(hero: Hero): Observable<any> {
+    this.log(`updating hero id=${hero.id}...`);
     return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe(
       tap(_ => this.log(`updated hero id=${hero.id}`)),
       catchError(this.handleError<any>('updateHero')));
   }
 
   addHero(hero: Hero): Observable<Hero> {
+    this.log(`adding hero id=${hero.id}...`);
     return this.http.post<Hero>(this.heroesUrl, hero, this.httpOptions).pipe(
-      tap((hero: Hero) => this.log(`added hero w/ id=${hero.id}`)),
+      tap((hero: Hero) => this.log(`added hero id=${hero.id}`)),
       catchError(this.handleError<Hero>('addHero')));
   }
 
   deleteHero(hero: Hero | number): Observable<Hero> {
     const id = typeof hero === 'number' ? hero : hero.id;
     const url = `${this.heroesUrl}/${id}`;
+    this.log(`deleting hero id=${id}...`);
     return this.http.delete<Hero>(url, this.httpOptions).pipe(
       tap(_ => this.log(`deleted hero id=${id}`)),
       catchError(this.handleError<Hero>('deleteHero')));

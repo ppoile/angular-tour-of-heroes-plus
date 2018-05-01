@@ -33,5 +33,8 @@ export class HeroSearchComponent implements OnInit {
       // switch to new search observable each time the term changes
       switchMap((term: string) => this.heroService.searchHeroes(term)),
     );
+    setTimeout(() => {
+      this.search('');
+    }, 0);
   }
 }
