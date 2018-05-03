@@ -1,4 +1,40 @@
 <h3>Top Heroes</h3>
+<button (click)="onClickMe()">Click me!</button>
+<p>{{clickMessage}}</p>
+<input (keyup)="onKey($event)">
+<p>{{values}}</p>
+<input (keyup)="onKey1($event)">
+<p>{{values1}}</p>
+<input #box (keyup)="0">
+<p>{{box.value}}</p>
+<input #box2 (keyup)="onKey2(box2.value)">
+<p>{{values2}}</p>
+<input #box3 (keyup.enter)="onEnter3(box3.value)">
+<p>{{value3}}</p>
+<input #box4 (keyup.enter)="update4(box4.value)" (blur)="update4(box4.value)">
+<p>{{value4}}</p>
+<input #box5 (keyup.enter)="update5(box5.value)" (blur)="reset5()">
+<p>{{value5}}</p>
+<div class="container">
+  <h1>Hero Form</h1>
+  <form>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" required>
+    </div>
+    <div class="form-group">
+      <label for="alterEgo">Alter Ego</label>
+      <input type="text" class="form-control" id="alterEgo">
+    </div>
+    <div class="form-group">
+      <label for="power">Hero Power</label>
+      <select class="form-control" id="power" required>
+        <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
 <div class="grid grid-pad">
   <a *ngFor="let hero of heroes" class="col-1-4" routerLink="/detail/{{hero.id}}">
     <div class="module hero">
