@@ -1,42 +1,6 @@
 <h2>Trial</h2>
 <app-login-selector></app-login-selector>
 <app-slave-selector></app-slave-selector>
-<div class="btn-group btn-group-toggle" data-toggle="buttons">
-  <label class="btn btn-primary">
-    <input type="radio" name="options" id="option2" autocomplete="off"> Login-Selector
-  </label>
-  <label class="btn btn-primary">
-    <input type="radio" name="options" id="option3" autocomplete="off"> Slave-Selector
-  </label>
-</div>
-
-<p>
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseLogins" aria-expanded="false" aria-controls="collapseLogins">Select Logins</button>
-</p>
-<div class="collapse" id="collapseLogins">
-  <div class="card card-body">
-    <button type="button" class="btn btn-default">All</button>
-    <button type="button" class="btn btn-dark">None</button>
-    <button type="button" class="btn btn-light" *ngFor="let login of logins">{{login.name}}</button>
-  </div>
-</div>
-<p>
-  <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseSlaves" aria-expanded="false" aria-controls="collapseSlaves">Select Slaves</button>
-</p>
-<div class="collapse" id="collapseSlaves">
-  <div class="card card-body">
-    <button type="button" class="btn btn-default">All</button>
-    <button type="button" class="btn btn-dark">None</button>
-    <button type="button" class="btn btn-default" *ngFor="let slave of slaves">{{slave.name}}</button>
-  </div>
-</div>
-
-<div class="btn-group-toggle" data-toggle="buttons">
-  <label class="btn btn-warning active">
-    <input type="checkbox" checked autocomplete="off"> Checked
-  </label>
-</div>
-
 <h2>Heroes</h2>
 <input [(ngModel)]="searchText" placeholder="search text goes here">
 <ul class="heroes">
