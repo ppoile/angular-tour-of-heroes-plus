@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Login } from '../login';
-import { LoginService } from '../login.service';
 import { Slave } from '../slave';
 import { SlaveService } from '../slave.service';
 import { Hero } from '../hero';
@@ -14,9 +12,6 @@ import { MessageService } from '../message.service';
   styleUrls: ['./heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
-  logins: Login[];
-  selectedLogins: Login[];
-  loginFilterText = 'Logins: Show All';
   slaves: Slave[];
   selectedSlaves: Slave[];
   slaveFilterText = 'Slaves: Show All';
@@ -24,13 +19,11 @@ export class HeroesComponent implements OnInit {
   heroes: Hero[];
 
   constructor(
-    private loginService: LoginService,
     private slaveService: SlaveService,
     private heroService: HeroService,
     private messageService: MessageService) { }
 
   ngOnInit() {
-    this.subscribeLogins();
     this.subscribeSlaves();
     this.subscribeHeroes();
   }
@@ -43,11 +36,6 @@ export class HeroesComponent implements OnInit {
   subscribeSlaves(): void {
     const observable = this.slaveService.getObservable();
     observable.subscribe(slaves => this.slaves = slaves);
-  }
-
-  subscribeLogins(): void {
-    const observable = this.loginService.getObservable();
-    observable.subscribe(logins => this.logins = logins);
   }
 
   add(name: string): void {

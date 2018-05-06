@@ -17,6 +17,7 @@ import { LoginService } from './login.service';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
+import { LoginSelectorComponent } from './login-selector/login-selector.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
     MessagesComponent,
     DashboardComponent,
     HeroSearchComponent,
+    LoginSelectorComponent,
   ],
   imports: [
     AppRoutingModule,
