@@ -1,21 +1,6 @@
 <h2>Trial</h2>
 <app-login-selector></app-login-selector>
-<div class="panel-group" id="accordion">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">{{slaveFilterText}}</a>
-      </h4>
-    </div>
-    <div id="collapse2" class="panel-collapse collapse">
-      <div class="card card-body">
-        <button type="button" class="btn btn-primary">All</button>
-        <button type="button" class="btn btn-secondary">None</button>
-        <button *ngFor="let slave of slaves" type="button" class="btn btn-default">{{slave.name}}</button>
-      </div>
-    </div>
-  </div>
-</div>
+<app-slave-selector></app-slave-selector>
 <div class="btn-group btn-group-toggle" data-toggle="buttons">
   <label class="btn btn-primary">
     <input type="radio" name="options" id="option2" autocomplete="off"> Login-Selector

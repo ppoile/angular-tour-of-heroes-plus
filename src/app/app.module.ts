@@ -18,6 +18,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { LoginSelectorComponent } from './login-selector/login-selector.component';
+import { SlaveSelectorComponent } from './slave-selector/slave-selector.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { LoginSelectorComponent } from './login-selector/login-selector.componen
     DashboardComponent,
     HeroSearchComponent,
     LoginSelectorComponent,
+    SlaveSelectorComponent,
   ],
   imports: [
     AppRoutingModule,
